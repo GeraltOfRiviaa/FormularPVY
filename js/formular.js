@@ -5,7 +5,7 @@ let hry = [{
 }]
 let merak = 0;
 let prazdnaHra = 0;
-
+let bonus = 0;  
     document.getElementById('pridani').addEventListener('click', function() {
         hry.push({hra: document.getElementById('game').value, 
                 hodiny:document.getElementById('hodiny').value, 
@@ -40,6 +40,7 @@ let prazdnaHra = 0;
         }
         
         aktualizovatSeznam();
+        if(bonus == 0){
         if(hry.length > 1){
             if (document.getElementById('radio1').checked) {
                 if(hry[0].hra == 'War Thunder'){
@@ -130,9 +131,12 @@ let prazdnaHra = 0;
             alert('Musíš mít v seznamu aspoň 2 hry');
         }
         
-
         
-        vytiskBonusu();
+            vytiskBonusu();
+            bonus = 1;
+    }
+        
+
 
     });
     
@@ -145,6 +149,10 @@ let prazdnaHra = 0;
     document.getElementById('reset').addEventListener('click', function() {
         hry = [];
         aktualizovatSeznam();
+        merak = 0;
+        bonus = 0;
+        prazdnaHra = 0;
+;
     })
     function vytiskSeznam(hry) {
         let li = document.createElement('li');
