@@ -1,9 +1,10 @@
 let hry = [{
     hra:'',
-    hodiny:'',
-    uspechy:''
+    hodiny:'' ,
+    uspechy: ''
 }]
 let merak = 0;
+let prazdnaHra = 0;
 
     document.getElementById('pridani').addEventListener('click', function() {
         hry.push({hra: document.getElementById('game').value, 
@@ -13,7 +14,17 @@ let merak = 0;
         hry.shift();
         merak++;
     }
-
+    for (let i = 0; i < hry.length; i++) {
+        if (hry[i].hra == '') {
+            hry.splice(i, 1);
+            prazdnaHra = 1;
+        }
+    }
+    if(prazdnaHra == 1){
+        alert('Nemůžeš mít prázdné pole hra');
+        prazdnaHra = 0;
+        console.log(hry);
+    }
                 
     aktualizovatSeznam();
     });
@@ -27,17 +38,98 @@ let merak = 0;
         } else if (document.getElementById('radio3').checked) {
             hry.sort((a, b) => a.hra.localeCompare(b.hra));
         }
-        else {
-            alert('Musíš vybrat aspoň jednu možnost');
-        }
+        
         if (hry.length < 2) {
             alert('Musíš mít v seznamu aspoň 2 hry');
         }
-        
-        
-        // Aktualizace seznamu her po seřazení
         aktualizovatSeznam();
-        hodnoceni();
+        if (document.getElementById('radio1').checked) {
+            if(hry[0].hra == 'War Thunder'){
+                hodnoceni();
+            }
+            else if(hry[0].hra == 'League of Legends'){
+                hodnoceni();
+            }
+            else if(hry[0].hra == 'World of Tanks'){
+                hodnoceni();
+            }
+            else if(hry[0].hra == 'Minecraft'){
+                hodnoceni();
+            }
+            else if(hry[0].hra == 'Counter-Strike 2'){
+                hodnoceni();
+            }
+            else if(hry[0].hra == 'For Honor'){
+                hodnoceni();
+            }
+            else if(hry[0].hra == 'Overwatch'){
+                hodnoceni();
+            }
+            else if(hry[0].hra == 'Fortnite'){
+                hodnoceni();
+            }
+            else if(hry[0].hra == "Tom Clancy's Rainbow Six Siege"){
+                hodnoceni();
+            }
+            else if(hry[0].hra == "GTA V"){
+                hodnoceni();
+            }
+            else if(hry[0].hra == "Apex Legends"){
+                hodnoceni();
+            }
+            else if(hry[0].hra == "Among Us"){
+                hodnoceni();
+            }
+            else if(hry[0].hra == "Call of Duty: Warzone"){
+                hodnoceni();
+            }
+
+        } else if (document.getElementById('radio2').checked) {
+            if(hry[0].hra == 'War Thunder'){
+                hodnoceni();
+            }
+            else if(hry[0].hra == 'League of Legends'){
+                hodnoceni();
+            }
+            else if(hry[0].hra == 'World of Tanks'){
+                hodnoceni();
+            }
+            else if(hry[0].hra == 'Minecraft'){
+                hodnoceni();
+            }
+            else if(hry[0].hra == 'Counter-Strike 2'){
+                hodnoceni();
+            }
+            else if(hry[0].hra == 'For Honor'){
+                hodnoceni();
+            }
+            else if(hry[0].hra == 'Overwatch'){
+                hodnoceni();
+            }
+            else if(hry[0].hra == 'Fortnite'){
+                hodnoceni();
+            }
+            else if(hry[0].hra == "Tom Clancy's Rainbow Six Siege"){
+                hodnoceni();
+            }
+            else if(hry[0].hra == "GTA V"){
+                hodnoceni();
+            }
+            else if(hry[0].hra == "Apex Legends"){
+                hodnoceni();
+            }
+            else if(hry[0].hra == "Among Us"){
+                hodnoceni();
+            }
+            else if(hry[0].hra == "Call of Duty: Warzone"){
+                hodnoceni();
+            }
+            
+        }
+
+        
+        vytiskBonusu();
+
     });
     
     function aktualizovatSeznam() {
@@ -149,21 +241,38 @@ let merak = 0;
         }
         hodnoceniElement.appendChild(hodnoceniText);
     }
-    function prumerHodin(){
-        let hodinySuma = 0;
-        let hodinyPrumer = 0;
-
-        for (let index = 0; index < hry.length; index++) {
-            hodinySuma =+ hry[index].hodiny;
-            
+    function hodinyDny(){
+        let hodinyCelkove = 0;
+        for(let i = 0; i < hry.length; i++){
+            hodinyCelkove += Number(hry[i].hodiny);
         }
-        hodinyPrumer =+ hodinySuma/pocetHer;
-
-        return hodinyPrumer;
+        if(hodinyCelkove < 1){
+            return 0;
+        }
+        else {
+            return Math.round(hodinyCelkove/24);
+        }
+        
+    }
+    function dnyHodiny(){
+        let hodinyCelkove = 0;
+        for(let i = 0; i < hry.length; i++){
+            hodinyCelkove += Number(hry[i].hodiny);
+        }
+        return hodinyCelkove % 24;
+    }
+    function secteniUspechu(){
+        let uspechyCelkove = 0;
+        for(let i = 0; i < hry.length; i++){
+            uspechyCelkove += Number(hry[i].uspechy);
+        }
+    return uspechyCelkove;
     }
     function vytiskBonusu(){
         let bonusE = document.getElementById('bonus');
         let bonusT = document.createElement('p');
-        bonusT.className = 'text-center'
-        bonusT.innerHTML = `Pokud hry hraješ již ${hraniRoky} let, tak si každý den nahrál ${prumerHodin()}`
+        bonusT.className = 'text-center display-7 '
+        bonusT.innerHTML = `Po sečtení všech hodin a úspěchů ze všech her vyšlo, že jsi hrál ${hodinyDny()} dní, ${dnyHodiny()} hodin a získal jsi ${secteniUspechu()} achievementů.`;
+        bonusE.appendChild(bonusT);
     }
+    
