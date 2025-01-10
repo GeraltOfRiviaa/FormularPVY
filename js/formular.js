@@ -39,93 +39,97 @@ let prazdnaHra = 0;
             hry.sort((a, b) => a.hra.localeCompare(b.hra));
         }
         
-        if (hry.length < 2) {
-            alert('Musíš mít v seznamu aspoň 2 hry');
-        }
         aktualizovatSeznam();
-        if (document.getElementById('radio1').checked) {
-            if(hry[0].hra == 'War Thunder'){
-                hodnoceni();
-            }
-            else if(hry[0].hra == 'League of Legends'){
-                hodnoceni();
-            }
-            else if(hry[0].hra == 'World of Tanks'){
-                hodnoceni();
-            }
-            else if(hry[0].hra == 'Minecraft'){
-                hodnoceni();
-            }
-            else if(hry[0].hra == 'Counter-Strike 2'){
-                hodnoceni();
-            }
-            else if(hry[0].hra == 'For Honor'){
-                hodnoceni();
-            }
-            else if(hry[0].hra == 'Overwatch'){
-                hodnoceni();
-            }
-            else if(hry[0].hra == 'Fortnite'){
-                hodnoceni();
-            }
-            else if(hry[0].hra == "Tom Clancy's Rainbow Six Siege"){
-                hodnoceni();
-            }
-            else if(hry[0].hra == "GTA V"){
-                hodnoceni();
-            }
-            else if(hry[0].hra == "Apex Legends"){
-                hodnoceni();
-            }
-            else if(hry[0].hra == "Among Us"){
-                hodnoceni();
-            }
-            else if(hry[0].hra == "Call of Duty: Warzone"){
-                hodnoceni();
+        if(hry.length > 1){
+            if (document.getElementById('radio1').checked) {
+                if(hry[0].hra == 'War Thunder'){
+                    hodnoceni();
+                }
+                else if(hry[0].hra == 'League of Legends'){
+                    hodnoceni();
+                }
+                else if(hry[0].hra == 'World of Tanks'){
+                    hodnoceni();
+                }
+                else if(hry[0].hra == 'Minecraft'){
+                    hodnoceni();
+                }
+                else if(hry[0].hra == 'Counter-Strike 2'){
+                    hodnoceni();
+                }
+                else if(hry[0].hra == 'For Honor'){
+                    hodnoceni();
+                }
+                else if(hry[0].hra == 'Overwatch'){
+                    hodnoceni();
+                }
+                else if(hry[0].hra == 'Fortnite'){
+                    hodnoceni();
+                }
+                else if(hry[0].hra == "Tom Clancy's Rainbow Six Siege"){
+                    hodnoceni();
+                }
+                else if(hry[0].hra == "GTA V"){
+                    hodnoceni();
+                }
+                else if(hry[0].hra == "Apex Legends"){
+                    hodnoceni();
+                }
+                else if(hry[0].hra == "Among Us"){
+                    hodnoceni();
+                }
+                else if(hry[0].hra == "Call of Duty: Warzone"){
+                    hodnoceni();
+                }
+    
+            } else if (document.getElementById('radio2').checked) {
+                if(hry[0].hra == 'War Thunder'){
+                    hodnoceni();
+                }
+                else if(hry[0].hra == 'League of Legends'){
+                    hodnoceni();
+                }
+                else if(hry[0].hra == 'World of Tanks'){
+                    hodnoceni();
+                }
+                else if(hry[0].hra == 'Minecraft'){
+                    hodnoceni();
+                }
+                else if(hry[0].hra == 'Counter-Strike 2'){
+                    hodnoceni();
+                }
+                else if(hry[0].hra == 'For Honor'){
+                    hodnoceni();
+                }
+                else if(hry[0].hra == 'Overwatch'){
+                    hodnoceni();
+                }
+                else if(hry[0].hra == 'Fortnite'){
+                    hodnoceni();
+                }
+                else if(hry[0].hra == "Tom Clancy's Rainbow Six Siege"){
+                    hodnoceni();
+                }
+                else if(hry[0].hra == "GTA V"){
+                    hodnoceni();
+                }
+                else if(hry[0].hra == "Apex Legends"){
+                    hodnoceni();
+                }
+                else if(hry[0].hra == "Among Us"){
+                    hodnoceni();
+                }
+                else if(hry[0].hra == "Call of Duty: Warzone"){
+                    hodnoceni();
+                }
+                
             }
 
-        } else if (document.getElementById('radio2').checked) {
-            if(hry[0].hra == 'War Thunder'){
-                hodnoceni();
-            }
-            else if(hry[0].hra == 'League of Legends'){
-                hodnoceni();
-            }
-            else if(hry[0].hra == 'World of Tanks'){
-                hodnoceni();
-            }
-            else if(hry[0].hra == 'Minecraft'){
-                hodnoceni();
-            }
-            else if(hry[0].hra == 'Counter-Strike 2'){
-                hodnoceni();
-            }
-            else if(hry[0].hra == 'For Honor'){
-                hodnoceni();
-            }
-            else if(hry[0].hra == 'Overwatch'){
-                hodnoceni();
-            }
-            else if(hry[0].hra == 'Fortnite'){
-                hodnoceni();
-            }
-            else if(hry[0].hra == "Tom Clancy's Rainbow Six Siege"){
-                hodnoceni();
-            }
-            else if(hry[0].hra == "GTA V"){
-                hodnoceni();
-            }
-            else if(hry[0].hra == "Apex Legends"){
-                hodnoceni();
-            }
-            else if(hry[0].hra == "Among Us"){
-                hodnoceni();
-            }
-            else if(hry[0].hra == "Call of Duty: Warzone"){
-                hodnoceni();
-            }
-            
         }
+        else{
+            alert('Musíš mít v seznamu aspoň 2 hry');
+        }
+        
 
         
         vytiskBonusu();
