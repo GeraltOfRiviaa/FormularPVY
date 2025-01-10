@@ -5,7 +5,8 @@ let hry = [{
 }]
 let merak = 0;
 let prazdnaHra = 0;
-let bonus = 0;  
+let bonus = 0; 
+let cyklus = 0; 
     document.getElementById('pridani').addEventListener('click', function() {
         hry.push({hra: document.getElementById('game').value, 
                 hodiny:document.getElementById('hodiny').value, 
@@ -39,8 +40,8 @@ let bonus = 0;
             hry.sort((a, b) => a.hra.localeCompare(b.hra));
         }
         
-        aktualizovatSeznam();
-        if(bonus == 0){
+        
+        if(cyklus == 0){
         if(hry.length > 1){
             if (document.getElementById('radio1').checked) {
                 if(hry[0].hra == 'War Thunder'){
@@ -130,12 +131,34 @@ let bonus = 0;
         else{
             alert('Musíš mít v seznamu aspoň 2 hry');
         }
-        
-        
+        for (let i = 0; i < hry.length; i++) {
+            for (let j = 0; j < hry.length; j++) {
+                if(hry[i].hodiny == hry[j].hodiny){
+                    bonus = 1;
+                
+                }
+                
+            }
+            
+        }
+        if(bonus == 0){
             vytiskBonusu();
-            bonus = 1;
+        }
+        else  {
+            let bonusE = document.getElementById('bonus');
+            let bonusT = document.createElement('p');
+            bonusT.className = 'text-center display-7 '
+            bonusT.innerHTML = `A teď co máš radši?  ${hry[0].hra} nebo ${hry[1].hra}?`;
+            bonusE.appendChild(bonusT);
+        }
+            
+            cyklus = 1;
+            aktualizovatSeznam();
     }
-        
+    else {
+        location.reload()
+        //Kód je komplikovaný, jak kšandy, takže ano, to že se stránka resetuje po druhém stisknutí tlačítka SEŘADIT je fíčura
+    }
 
 
     });
@@ -147,11 +170,14 @@ let bonus = 0;
         hry.forEach(vytiskSeznam);
     }
     document.getElementById('reset').addEventListener('click', function() {
+        /*
         hry = [];
         aktualizovatSeznam();
         merak = 0;
         bonus = 0;
         prazdnaHra = 0;
+        */
+    location.reload();
 ;
     })
     function vytiskSeznam(hry) {
