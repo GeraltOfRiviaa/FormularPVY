@@ -48,25 +48,18 @@ let cyklus = 0;
         else{
             alert('Musíš mít v seznamu aspoň 2 hry');
         }
-        for (let i = 0; i < hry.length; i++) {
-            for (let j = 1; j < hry.length; j++) {
-                if(hry[i].hodiny == hry[j].hodiny){
-                    bonus = 1;
-                }
-                else{
-                    bonus = 0;
-                }
-                
-            }
-            
-        }
-        if(bonus == 0){
+        
+        if(stejneHodiny() == false){
             vytiskBonusu();
         }
         else  {
             let bonusE = document.getElementById('bonus');
             let bonusT = document.createElement('p');
             bonusT.className = 'text-center display-7 '
+            let existingText = document.querySelector('#bonus p');
+        if (existingText) {
+            existingText.remove();
+        }
             bonusT.innerHTML = `A teď co máš radši?  ${hry[0].hra} nebo ${hry[1].hra}?`;
             bonusE.appendChild(bonusT);
         }
@@ -231,7 +224,7 @@ let cyklus = 0;
             return 0;
         }
         else {
-            return Math.round(hodinyCelkove/24);
+            return Math.floor(hodinyCelkove/24);
         }
         
     }
@@ -252,8 +245,26 @@ let cyklus = 0;
     function vytiskBonusu(){
         let bonusE = document.getElementById('bonus');
         let bonusT = document.createElement('p');
-        bonusT.className = 'text-center display-7 '
+        bonusT.className = 'text-center'
+        let existingBonusText = document.querySelector('#bonus p');
+        if (existingBonusText) {
+            existingBonusText.remove();
+        }
         bonusT.innerHTML = `Po sečtení všech hodin a úspěchů ze všech her vyšlo, že jsi hrál ${hodinyDny()} dní, ${dnyHodiny()} hodin a získal jsi ${secteniUspechu()} achievementů.`;
         bonusE.appendChild(bonusT);
     }
     
+    function stejneHodiny(){
+        for (let i = 0; i < hry.length; i++) {
+            for (let j = i + 1; j < hry.length; j++) {
+                if(hry[i].hodiny == hry[j].hodiny){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+                
+            }
+            
+        }
+    }
